@@ -26,15 +26,15 @@ void loop()
   //constantly check state of the button
   buttonState = digitalRead(2);
   //uncomment to error check
-  //Serial.print("Button pushed? ");
-  //Serial.println(buttonState);
+  /*Serial.print("Button pushed? ");
+  Serial.println(buttonState);*/
 
   if (buttonState == 1) //button is pushed
   {
     buttonPushes++;
     //uncomment to error check
-    Serial.print("Number of pushes: ");
-    Serial.println(buttonPushes);
+    /*Serial.print("Number of pushes: ");
+    Serial.println(buttonPushes);*/
     if (buttonPushes < 4) //only measure 3 times
     {
       //lights on to indicate reading
@@ -45,8 +45,8 @@ void loop()
       delay(1000); //wait 1 sec to get steady reading
       force = analogRead(A0);
       //uncomment to error check
-      Serial.print("Initial force: ");
-      Serial.println(force);
+      /*Serial.print("Initial force: ");
+      Serial.println(force);*/
 
       //read a new force for 4 sec to check for any change
       startTime = millis();
@@ -54,8 +54,8 @@ void loop()
       {
       newforce = analogRead(A0);
       //uncomment to error check
-      Serial.print("Reading force: ");
-      Serial.println(newforce);
+      /*Serial.print("Reading force: ");
+      Serial.println(newforce);*/
         if ((newforce < force-200) || (newforce > force+200)) //if the analog reading of the force changes by + or - 200
         {
           TorL[buttonPushes-1] = 0; //index one less than number of current button pushes
@@ -70,10 +70,10 @@ void loop()
 
       //if no change of force was detected, TorL of that index remains as true
       //uncomment to error check
-      if (TorL[buttonPushes-1] == 1)
+      /*if (TorL[buttonPushes-1] == 1)
         Serial.println("Truth");
       else if (TorL[buttonPushes-1] == 0)
-        Serial.println("Lie");
+        Serial.println("Lie");*/
 
       //lights off to indicate done reading
       analogWrite(3,0);
@@ -84,7 +84,6 @@ void loop()
   //display repective light according to TorL values
   if (buttonPushes > 4) //only after 3 questions are asked
   {
-    //uncomment to error check
     for (int i = 0; i < 3; i++)
     {
       if (TorL[i] == 1) //flash green for 1 sec if truth
