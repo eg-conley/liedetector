@@ -1,2 +1,5 @@
-# liedetector
-ek210 lie detector project
+# Lie Detector
+
+## Overview 🔍:
+
+## My Role 🚧:
